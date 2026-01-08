@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="view_gift_card_cancel_form" model="ir.ui.view">
+        <field name="name">gift.card.cancel.form</field>
+        <field name="model">gift.card.cancel</field>
+        <field name="arch" type="xml">
+            <form string="Cancel Gift Card">
+                <sheet>
+                    <group>
+                        <field name="gift_card_code" placeholder="Enter gift card code..."/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_cancel_gift_card" 
+                            string="Cancel Gift Card" 
+                            type="object" 
+                            class="btn-primary"/>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_gift_card_cancel" model="ir.actions.act_window">
+        <field name="name">Cancel Gift Card</field>
+        <field name="res_model">gift.card.cancel</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- ============================================ -->
+    <!-- ROOT MENU -->
+    <!-- ============================================ -->
+    <menuitem id="menu_gift_card_root"
+              name="Gift Card Management"
+              sequence="100"
+              groups="cancel_gift.group_gift_card_admin"
+              web_icon="cancel_gift,static/description/icon.png"/>
+
+    <!-- ============================================ -->
+    <!-- CANCEL GIFT CARD MENU -->
+    <!-- ============================================ -->
+    <menuitem id="menu_gift_card_cancel"
+              name="Cancel Gift Card"
+              parent="menu_gift_card_root"
+              action="action_gift_card_cancel"
+              sequence="1"
+              groups="cancel_gift.group_gift_card_admin"/>
+</odoo>
